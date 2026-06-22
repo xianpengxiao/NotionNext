@@ -147,7 +147,7 @@ const Style = () => {
         border-radius: 9999px;
         padding: 0.5rem 1rem;
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        cursor: text;
+        cursor: pointer;
       }
       .mytheme-search-box:hover,
       .mytheme-search-box:focus-within {

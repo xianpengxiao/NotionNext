@@ -132,7 +132,7 @@ const CONFIG = {
   /** 分享条 */
   FUWARI_ARTICLE_SHARE: false,
   /** 文末版权信息块 */
-  FUWARI_ARTICLE_COPYRIGHT: true,
+  FUWARI_ARTICLE_COPYRIGHT: false,
   /** 文末评论区（需在 `blog.config.js` 配置任一种评论服务，如 COMMENT_GISCUS_REPO / COMMENT_TWIKOO_ENV_ID 等，否则不渲染） */
   FUWARI_ARTICLE_COMMENT: true,
   /** 文末上一篇 / 下一篇 */

@@ -96,23 +96,13 @@ const LayoutIndex = props => {
   const infoCards = [
     {
       icon: siteConfig('FUWARI_CARD_1_ICON', 'fas fa-robot', CONFIG),
-      title: siteConfig('FUWARI_CARD_1_TITLE', '身份', CONFIG),
-      desc: siteConfig('FUWARI_CARD_1_DESC', 'AI 效率极客', CONFIG)
+      title: siteConfig('FUWARI_CARD_1_TITLE', '状态', CONFIG),
+      desc: siteConfig('FUWARI_CARD_1_DESC', '找工作ing', CONFIG)
     },
     {
       icon: siteConfig('FUWARI_CARD_2_ICON', 'fas fa-user', CONFIG),
       title: siteConfig('FUWARI_CARD_2_TITLE', '模式', CONFIG),
-      desc: siteConfig('FUWARI_CARD_2_DESC', '一人公司', CONFIG)
-    },
-    {
-      icon: siteConfig('FUWARI_CARD_3_ICON', 'fas fa-cogs', CONFIG),
-      title: siteConfig('FUWARI_CARD_3_TITLE', '引擎', CONFIG),
-      desc: siteConfig('FUWARI_CARD_3_DESC', '全栈自动化引擎', CONFIG)
-    },
-    {
-      icon: siteConfig('FUWARI_CARD_4_ICON', 'fas fa-check-circle', CONFIG),
-      title: siteConfig('FUWARI_CARD_4_TITLE', '状态', CONFIG),
-      desc: siteConfig('FUWARI_CARD_4_DESC', '做更少，赚更多', CONFIG)
+      desc: siteConfig('FUWARI_CARD_2_DESC', 'AI辅助代码实践项目', CONFIG)
     }
   ]
 
@@ -175,18 +165,26 @@ const LayoutIndex = props => {
             View all &rarr;
           </a>
         </div>
-        <div className='grid gap-3'>
+        <div className='divide-y divide-[var(--fuwari-border)]'>
           {latestPosts.map((post, idx) => (
             <a
               key={post.id}
               href={post.href || `/${post.slug}`}
-              className='flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-[var(--fuwari-border)] pb-3 gap-2 last:border-b-0 last:pb-0'>
-              <span className='text-sm sm:text-base font-medium text-[var(--fuwari-text)] hover:text-[var(--fuwari-primary)] transition-colors'>
-                {post.title}
-              </span>
-              <span className='text-sm text-[var(--fuwari-muted)]'>
-                {formatDate(post.publishDay || post.date?.start_date || post.createdTime)}
-              </span>
+              className='flex items-center justify-between py-3 group transition-colors'>
+              <div className='flex items-center gap-3 min-w-0'>
+                <span className='text-xs font-mono text-[var(--fuwari-muted)] w-4 shrink-0'>
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
+                <span className='text-sm text-[var(--fuwari-text)] group-hover:text-[var(--fuwari-primary)] transition-colors truncate'>
+                  {post.title}
+                </span>
+              </div>
+              <div className='flex items-center gap-3 shrink-0'>
+                <span className='text-[11px] text-[var(--fuwari-muted)]'>
+                  {formatDate(post.publishDay || post.date?.start_date || post.createdTime)}
+                </span>
+                <i className='fas fa-chevron-right text-[10px] text-[var(--fuwari-muted)] opacity-0 group-hover:opacity-100 transition-opacity' />
+              </div>
             </a>
           ))}
         </div>

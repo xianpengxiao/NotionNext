@@ -24,6 +24,7 @@ const SidePanel = props => {
   } = props
   const { locale } = useGlobal()
   const title = siteConfig('TITLE')
+  const description = siteConfig('DESCRIPTION')
   const showToc =
     siteConfig('FUWARI_ARTICLE_TOC', true, CONFIG) &&
     post?.toc &&
@@ -45,6 +46,11 @@ const SidePanel = props => {
           </div>
         </SmartLink>
         <h2 className='text-xl font-semibold mb-1'>{siteConfig('AUTHOR') || title}</h2>
+        {description && (
+          <p className='text-sm leading-6 text-[var(--fuwari-muted)]'>
+            {description}
+          </p>
+        )}
         <div className='pt-3 mt-3 border-t border-[var(--fuwari-border)]'>
           <SocialButton />
         </div>

@@ -120,7 +120,7 @@ const CONFIG = {
   /** 问候语前缀（显示在作者名前） */
   FUWARI_HERO_GREETING: '👋 你好，我是',
   /** 个人简介（支持 HTML 标签，如 <span class="underline">强调词</span>） */
-  FUWARI_HERO_BIO: '做好手上的事，在校<span class="underline decoration-[var(--fuwari-primary)] underline-offset-2">大学生</span>。使用AI构建快速落地的<span class="underline decoration-[var(--fuwari-primary)] underline-offset-2">个人项目</span>。',
+  FUWARI_HERO_BIO: '一名在校<span class="underline decoration-[var(--fuwari-primary)] underline-offset-2">大学生</span>。分享项目完成过程中的各种<span class="underline decoration-[var(--fuwari-primary)] underline-offset-2">重要点和经验</span>。',
   /** 「联系我」按钮跳转链接 */
   FUWARI_HERO_CONTACT_LINK: '/contact',
   /** 「联系我」按钮文案 */

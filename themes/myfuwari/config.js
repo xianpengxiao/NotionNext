@@ -60,7 +60,7 @@ const CONFIG = {
   /** 公告（有公告数据时） */
   FUWARI_WIDGET_NOTICE: false,
   /** 最新文章列表 */
-  FUWARI_WIDGET_LATEST_POSTS: true,
+  FUWARI_WIDGET_LATEST_POSTS: false,
   /** 分类云/列表 */
   FUWARI_WIDGET_CATEGORY_LIST: true,
   /** 标签云/列表 */
@@ -113,6 +113,34 @@ const CONFIG = {
   FUWARI_CONTACT_BACK_DESCRIPTION: '可提交问题、建议与合作意向。',
   /** 背面行动文案 */
   FUWARI_CONTACT_BACK_TEXT: '查看',
+
+  // ---------------------------------------------------------------------------
+  // 首页 Hero 个人信息区
+  // ---------------------------------------------------------------------------
+  /** 问候语前缀（显示在作者名前） */
+  FUWARI_HERO_GREETING: '👋 你好，我是',
+  /** 个人简介（支持 HTML 标签，如 <span class="underline">强调词</span>） */
+  FUWARI_HERO_BIO: '做好手上的事，在校<span class="underline decoration-[var(--fuwari-primary)] underline-offset-2">大学生</span>。使用AI构建快速落地的<span class="underline decoration-[var(--fuwari-primary)] underline-offset-2">个人项目</span>。',
+  /** 「联系我」按钮跳转链接 */
+  FUWARI_HERO_CONTACT_LINK: '/contact',
+  /** 「联系我」按钮文案 */
+  FUWARI_HERO_CONTACT_TEXT: '联系我',
+
+  // ---------------------------------------------------------------------------
+  // 首页四宫格信息卡片
+  // ---------------------------------------------------------------------------
+  /** 卡片 1 — 图标（FontAwesome class） */
+  FUWARI_CARD_1_ICON: 'fas fa-robot',
+  /** 卡片 1 — 小标题 */
+  FUWARI_CARD_1_TITLE: '状态',
+  /** 卡片 1 — 描述 */
+  FUWARI_CARD_1_DESC: '找工作ing',
+  /** 卡片 2 — 图标 */
+  FUWARI_CARD_2_ICON: 'fas fa-user',
+  /** 卡片 2 — 小标题 */
+  FUWARI_CARD_2_TITLE: '模式',
+  /** 卡片 2 — 描述 */
+  FUWARI_CARD_2_DESC: 'AI辅助代码实践项目',
 
   // ---------------------------------------------------------------------------
   // 全站动效（按需开启，可能影响性能）

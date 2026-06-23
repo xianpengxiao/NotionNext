@@ -84,7 +84,116 @@ const LayoutBase = props => {
   )
 }
 
-const LayoutIndex = props => <LayoutPostList {...props} />
+const LayoutIndex = props => {
+  const locale = getLocale()
+  const author = siteConfig('AUTHOR') || ''
+  const greeting = siteConfig('FUWARI_HERO_GREETING', "👋 你好，我是", CONFIG)
+  const bio = siteConfig('FUWARI_HERO_BIO', '', CONFIG)
+  const contactLink = siteConfig('FUWARI_HERO_CONTACT_LINK', '/contact', CONFIG)
+  const contactText = siteConfig('FUWARI_HERO_CONTACT_TEXT', '联系我', CONFIG)
+  const latestPosts = (props.latestPosts || props.posts || []).slice(0, 5)
+
+  const infoCards = [
+    {
+      icon: siteConfig('FUWARI_CARD_1_ICON', 'fas fa-robot', CONFIG),
+      title: siteConfig('FUWARI_CARD_1_TITLE', '身份', CONFIG),
+      desc: siteConfig('FUWARI_CARD_1_DESC', 'AI 效率极客', CONFIG)
+    },
+    {
+      icon: siteConfig('FUWARI_CARD_2_ICON', 'fas fa-user', CONFIG),
+      title: siteConfig('FUWARI_CARD_2_TITLE', '模式', CONFIG),
+      desc: siteConfig('FUWARI_CARD_2_DESC', '一人公司', CONFIG)
+    },
+    {
+      icon: siteConfig('FUWARI_CARD_3_ICON', 'fas fa-cogs', CONFIG),
+      title: siteConfig('FUWARI_CARD_3_TITLE', '引擎', CONFIG),
+      desc: siteConfig('FUWARI_CARD_3_DESC', '全栈自动化引擎', CONFIG)
+    },
+    {
+      icon: siteConfig('FUWARI_CARD_4_ICON', 'fas fa-check-circle', CONFIG),
+      title: siteConfig('FUWARI_CARD_4_TITLE', '状态', CONFIG),
+      desc: siteConfig('FUWARI_CARD_4_DESC', '做更少，赚更多', CONFIG)
+    }
+  ]
+
+  const formatDate = d => {
+    if (!d) return ''
+    const s = String(d)
+    const m = s.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/)
+    return m ? `${m[1]}.${m[2].padStart(2, '0')}.${m[3].padStart(2, '0')}` : s
+  }
+
+  return (
+    <section className='space-y-5'>
+      {/* ====== Hero ====== */}
+      <div className='fuwari-card p-6'>
+        <h1 className='text-2xl font-bold text-[var(--fuwari-text)]'>
+          {greeting}{author}
+        </h1>
+        {bio && (
+          <p
+            className='mt-2 text-sm leading-7 text-[var(--fuwari-muted)]'
+            dangerouslySetInnerHTML={{ __html: bio }}
+          />
+        )}
+        <a
+          href={contactLink}
+          className='mt-4 inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-sm font-medium
+            text-[var(--fuwari-primary)] border border-[var(--fuwari-primary)]
+            hover:bg-[var(--fuwari-primary)] hover:text-white transition-all duration-200'>
+          <i className='far fa-paper-plane' />
+          {contactText}
+        </a>
+      </div>
+
+      {/* ====== 四宫格 ====== */}
+      <div className='grid grid-cols-2 gap-3'>
+        {infoCards.map(card => (
+          <div key={card.title} className='fuwari-card p-4'>
+            <div className='flex items-center gap-3'>
+              <i className={`${card.icon} text-lg text-[var(--fuwari-primary)] w-5 text-center`} />
+              <div>
+                <div className='text-[11px] uppercase tracking-wider text-[var(--fuwari-muted)]'>
+                  {card.title}
+                </div>
+                <div className='text-sm font-medium text-[var(--fuwari-text)]'>
+                  {card.desc}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ====== 最新文章 ====== */}
+      <div className='fuwari-card p-5'>
+        <div className='flex items-center justify-between mb-3'>
+          <span className='text-xs uppercase tracking-widest text-[var(--fuwari-muted)] font-semibold'>
+            LATEST
+          </span>
+          <a href='/archive' className='text-xs text-[var(--fuwari-primary)] hover:underline'>
+            View all &rarr;
+          </a>
+        </div>
+        <div className='grid gap-3'>
+          {latestPosts.map((post, idx) => (
+            <a
+              key={post.id}
+              href={post.href || `/${post.slug}`}
+              className='flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-[var(--fuwari-border)] pb-3 gap-2 last:border-b-0 last:pb-0'>
+              <span className='text-sm sm:text-base font-medium text-[var(--fuwari-text)] hover:text-[var(--fuwari-primary)] transition-colors'>
+                {post.title}
+              </span>
+              <span className='text-sm text-[var(--fuwari-muted)]'>
+                {formatDate(post.publishDay || post.date?.start_date || post.createdTime)}
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 const LayoutPostList = props => {
   const locale = getLocale()

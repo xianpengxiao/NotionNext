@@ -56,7 +56,7 @@ export default function SearchModal({ cRef, posts = [] }) {
       setActiveIndex(i => Math.max(i - 1, 0))
     } else if (e.key === 'Enter' && results[activeIndex]) {
       const r = results[activeIndex]
-      window.location.href = `/${r.slug}`
+      router.push(r.href || `/${r.slug}`)
     } else if (e.key === 'Escape') {
       setIsOpen(false)
     }
@@ -126,7 +126,7 @@ export default function SearchModal({ cRef, posts = [] }) {
           {results.map((post, i) => (
             <a
               key={post.id}
-              href={`/${post.slug}`}
+              href={post.href || `/${post.slug}`}
               onMouseEnter={() => setActiveIndex(i)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all duration-150 ${
                 i === activeIndex

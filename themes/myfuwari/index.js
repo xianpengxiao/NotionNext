@@ -44,7 +44,8 @@ const LayoutBase = props => {
   const router = useRouter()
   const showHomeHero =
     !props.post &&
-    (router.pathname === '/' || router.pathname === '/page/[page]')
+    (router.pathname === '/' || router.pathname === '/page/[page]') &&
+    siteConfig('FUWARI_HERO_ENABLE', true, CONFIG)
 
   return (
     <div
